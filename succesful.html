@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+     #card{
+        
+         border: 5px silver solid;
+         border-radius: 10%;
+        width: 30%;
+        margin-left: 35%;
+        display: grid;
+       grid-template-columns: 1fr;
+       height: max-content;
+       gap: 10px;
+    }
+    input{
+        margin-left: 30%;
+        width: 40%;
+    }
+    button{
+        margin-left: 30%;
+        width: 40%;
+        margin-bottom: 20%;
+    }
+    h3{
+        text-align: center;
+    }
+</style>
+<body>
+<div id="card">
+    <h3>Enter One Time Password</h3>
+    <input type="number" maxlength="4" id="otp">
+    <button onclick="x()">
+    Pay</button>
+
+</div>
+  
+</body>
+<script>  
+var c ='One Time Password Sent Your Regstered Mobile Number.'
+    alert(c)
+    function x(){
+        var k=document.getElementById('otp').value
+        if(k==1234){
+            alert("Payment sucessful!")
+        }else{
+            alert('Wrong one time password');
+            return
+        }
+        window.location.href='./done.html'
+    }
+    </script>
+</html>

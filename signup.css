@@ -1,0 +1,36 @@
+#main{
+    height: 500px;
+    width: 25%;
+    margin-left: 35%;
+    margin-top: 5%;
+    padding-left: 3%;
+    padding-top: 1%;
+    background-color: rgba(227, 197, 197, 0.255);
+    border-color: rgb(92, 142, 142) 10px solid;
+    border-radius: 10%;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+}
+#create{
+    font-weight: 500;
+    font-size: 35px;
+}
+body{
+    background-color: rgba(109, 155, 60, 0.548);
+}
+input{
+    height: 20px;
+    width: 70%;
+    
+}
+button{
+    height: 30px;
+    width: 70%;
+    background-color: rgb(242,205,112);
+}
+#san{
+font-weight: 600;
+    height: 30px;
+    width: 70%;
+    background-color: rgb(242,205,112); 
+}

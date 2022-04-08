@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="signup.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+</head>
+<style> 
+#navbar{
+        height: 60px;
+       display: grid;
+       grid-template-columns: 30% 15% 15% 15% 15%;
+        margin-bottom: 50px;
+        background-color: rgba(44, 39, 39, 0.679);
+        color: white;
+    }
+    #navbar a:hover{
+        font-size: 150%;
+        color: white;
+        text-decoration: none;
+    }
+   
+    #navbar>p{
+      text-shadow: 10%;
+    }
+   a{
+       color: whitesmoke;
+       text-decoration: solid;
+   }
+</style>
+<body>
+    <div id="navbar">
+        <h2>SHAHSHOP.COM</h2>
+        <P><a href="./index.html">MEN</a></P>
+        <P><a href="./women.html">WOMEN</a>
+        </P>
+        <P></P>
+        <p id='user'><a href="./login.html">Log In</a></p>
+       
+
+    </div>
+
+
+    <div id="main">
+        <p id="create">Log in Account</p>
+        <label for="email">Username</label>
+        <br>
+        <input type="text" id="logname">
+        <br>
+        <label for="name">Password</label>
+        <br>
+        <input type="password" id="logpass">
+        <br>
+        <br>
+        <button onclick="check()">Log In</button>
+        <P>Already have an account.<a href="./register.html">Create account</a></P>
+    </div>
+    <script>
+        function check() {
+            var p=false
+            var usercollection = JSON.parse(localStorage.getItem('usercollection'))
+            if(usercollection==null){
+                alert("not found")
+                window.location.reload()
+                return
+            }
+            var pas = document.querySelector('#logpass').value;
+            var name = document.querySelector('#logname').value
+            usercollection.forEach(element => {
+                if (element.name == name && element.password == pas) {
+                    alert("log in succesful!")
+                localStorage.setItem("curuser",name)
+                window.location.href="./index.html"
+p=true
+
+                } 
+                
+            });
+            if(p==false){
+                localStorage.setItem('curuser',null)
+                alert(" User not found !")
+            }
+           
+        }
+
+        
+    </script>
+</body>
+
+</html>

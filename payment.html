@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+</head>
+<style>
+    body{
+        background-color: whitesmoke;
+    }
+    #info{
+        text-align: center;
+        column-rule-color: bisque;
+    }
+    #card{
+        width: 30%;
+        margin-left: 35%;
+        display: grid;
+       grid-template-columns: 1fr;
+       gap: 10px;
+    }
+    input{
+        height: 25px;
+    }
+    button{
+        font-size: 20px;
+        color: black;
+        background-color: darkgray;
+        height: 30px;
+    }
+</style>
+<body>
+    <div id="info">
+        <h3>Payment getway</h3>
+    </div>
+    <div id="card">
+        <label for=""> Card Number</label>
+        <input type="number" id="number" placeholder="Enter your 16 digit ">
+        <label for="">Valid date</label>
+        <input type="month" id="date" placeholder="Card valid date">
+        <label for="">CVV Number</label>
+        <input type="number" name="" id="cvv" placeholder="Card cvv ">
+        <label for=""> Card Holder Name</label>
+<input type="text" name="" id="name" placeholder="Name">
+<button onclick="pay()">Continue</button>
+    </div>
+    
+</body>
+<script>
+    var am= JSON.parse(localStorage.getItem("pay"))
+var c=document.createElement("h1")
+    c.innerText=`Total Amount ${am}`
+    document.getElementById('info').append(c)
+    function pay(){
+        num=document.getElementById('number').value
+        date=document.getElementById('date').value
+        cvv=document.getElementById('cvv').value
+        name=document.getElementById('name').value
+        if(name==''||date==''||num.length!==16||cvv.length!==3){
+            alert( "Fill all required field")
+            return
+        }
+        window.location.href='./succesful.html'
+       
+
+      
+        
+    }
+</script>
+</html>

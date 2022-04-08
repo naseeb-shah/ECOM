@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+</head>
+<style>
+    body{
+        background-color:rgba(214, 170, 170, 0.667) ;
+    }
+    #main {
+        margin-top: 5%;
+        margin-right: 25%;
+        margin-left: 35%;
+        justify-content: center;
+        padding: 3%;
+        border: 10px ridge rgb(208, 161, 161);
+        font-size: 30px;
+        background-color: rgba(146, 183, 151, 0.35);
+
+    }
+    #main>input{
+        height: 20px;
+        width: 80%;
+        border-radius: 5%;
+        border: 1px ridge;
+    }
+    select{
+        width:35% ;
+        height: 20px;
+    }
+
+    #out {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 5px;
+        row-gap: 10px;
+
+    } 
+  .he{
+      color:blueviolet;
+      text-align: center;
+  }
+  
+</style>
+
+<body>
+
+    <div class="he"><h1>Expense Trackers</h1></div>
+    <div id="main">
+        <label for="ma">Select Month</label>
+
+
+        <select name="ma" id="month">
+
+        </select>
+        <br>
+        <label for="na">Income</label><br>
+        <input type="number" name="" id="inc" placeholder="Enter your income in Rs.">
+        <br>
+        <label for="ex">Expense</label><br>
+        <input type="number" id="ex" placeholder="Enter your expense in Rs">
+        <br>
+        <div id="botton">
+            <button onclick="x()">SUBMIT</button>
+    </div>
+        </div>
+    
+   
+
+    <div id="out">
+
+    </div>
+</body>
+<script>
+   
+    var arr = ["January",
+        "February", "March", "April", "May"
+        , "June"
+        , "July", "August", "September", "October", "November", "December"]
+    for (var i = 0; i < arr.length; i++) {
+        var m = document.createElement('option')
+
+        m.value = arr[i]
+        m.innerText = arr[i]
+        document.getElementById('month').appendChild(m)
+
+    }
+    var c =0
+ function x(){
+     c++
+      var month=document.getElementById('month').value
+      console.log(month)
+      var income=document.getElementById('inc').value
+      
+      var ex=document.getElementById('ex').value
+    
+      var saving=income-ex
+      var div = document.createElement('div')
+      var duck="final"+c
+     
+      
+      div.id=duck
+      document.getElementById('out').appendChild(div)
+     var mo = document.createElement('h2')
+     mo.innerText=month
+     document.getElementById(duck).append(mo)
+
+     var sinc = document.createElement('p')
+     sinc.innerText=`Your income is Rs ${income}`
+     document.getElementById(duck).append(sinc)
+     
+     
+     var exp = document.createElement('p')
+     exp.innerText=`Your expensive is Rs ${ex}`
+     document.getElementById(duck).append(exp)
+     var sav = document.createElement('p')
+     
+     sav.innerText=`Your savings is Rs ${saving}`
+     document.getElementById(duck).append(sav)
+document.getElementById(duck).style.backgroundColor="rgba(0, 0, 0, 0.481)"
+document.getElementById(duck).style.padding="15px"
+document.getElementById(duck).style.color="white"
+document.getElementById(duck).style.boxShadow="0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.20)"
+
+
+     c++
+     
+      
+ }
+</script>
+
+</html>
+© 2022 

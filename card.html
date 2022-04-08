@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> SHOPPING CARD</title>
+</head>
+<body>
+    <style>
+         #main{
+        
+        display: grid;
+        grid-template-columns:repeat(4,1fr);
+        gap: 10px;
+    }
+    .y{
+        
+        height: 60%;
+        width: 80%;
+    }
+    .z{
+      background-color: white;
+      
+    }
+    .z:hover{
+      width: 95%;
+      border: 2px black ridge;
+      box-shadow: rgba(0, 0, 0, 0.426) 0px 54px 55px, rgba(156, 62, 62, 0.334) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+    .name{
+        padding-left: 5%;
+    }
+    #navbar{
+        height: 60px;
+       display: grid;
+       grid-template-columns: 30% 15% 15% 15% 15%;
+        margin-bottom: 50px;
+        background-color: rgba(44, 39, 39, 0.679);
+        color: white;
+    }
+    #navbar a:hover{
+        font-size: 150%;
+        color: white;
+        text-decoration: none;
+    }
+    a{
+    color: white;
+      text-decoration: none;
+    }
+    #navbar>p{
+      text-shadow: 10%;
+    }
+    </style>
+    <div id="navbar">
+        <h2>SHAHSHOP.COM</h2>
+        <P><a href="./index.html">MEN</a></P>
+        <P><a href="./women.html">WOMEN</a>
+        </P>
+        <P><a href="card.html">Go to cart</a></P>
+        <p id='user'><a href="./login.html">Log In</a></p>
+       
+
+    </div>
+    <div id="da">
+
+    </div>
+     <div id="main"></div>
+     <p ><a style="color: black;font-size: 35px;" href="payment.html">Continue to payment ...</a></p>
+</body>
+<script>
+    if(localStorage.getItem('curuser')!==null){
+  var g =document.createElement('button')
+  g.id="logout"
+  g.innerText="logout"
+  
+  var h=document.getElementById('user')
+  h.innerText=localStorage.getItem('curuser')
+  h.appendChild(g)
+}
+if(localStorage.getItem('curuser')!==null){
+  document.querySelector("#logout").addEventListener('click',function(){
+  localStorage.removeItem('curuser')
+window.location.reload()
+})
+}
+    var sum =0
+    var item=0
+    var arr=JSON.parse(localStorage.getItem('cardata'))
+    console.log(arr)
+    arr.forEach(function(e,i){
+        sum+=e.price
+        item++
+       div= document.createElement('div')
+       var x= document.createElement('img')
+       x.src=e.image_url
+       x.className="y"
+       
+       var y= document.createElement('p')
+       y.innerText=e.name
+       y.className='name'
+       var z= document.createElement('p')
+       z.innerText=e.price
+       z.className='name'
+       z.style.color='red'
+
+       var b = document.createElement("button")
+b.id="cart"
+b.innerText='Remove'
+b.addEventListener('click',function(){
+    console.log(i,e)
+    sum-=e.price
+    console.log(sum)
+    item--
+arr.splice(i,1)
+
+ localStorage.setItem('cardata',JSON.stringify(arr))
+ window.location.reload()
+
+ })
+
+
+       div.append(x,y,z,b)
+       div.className='z'
+       document.querySelector('#main').appendChild(div)
+       
+    })
+var username =localStorage.getItem('curuser')
+if(localStorage.getItem('curuser')==null){
+  username="Guest"
+}
+    var q =document.createElement('h3')
+    q.innerText=`${username} ,Your card value is Rs. ${sum} and items in card are ${item}.`
+document.querySelector('#da').appendChild(q)
+
+   localStorage.setItem("pay",JSON.stringify(sum))
+   localStorage.setItem("no",JSON.stringify(item))
+</script>
+</html>
