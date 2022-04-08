@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,9 @@
 </head>
 <body>
     <style>
+      #left{
+        text-align: right;
+      }
          #main{
         
         display: grid;
@@ -32,10 +36,17 @@
         padding-left: 5%;
     }
     #navbar{
+   
+      /* overflow: hidden; */
+  /* background-color: #333; */
+ 
+ 
+  width: 100%;
         height: 60px;
        display: grid;
+       margin-bottom: 100px;
        grid-template-columns: 30% 15% 15% 15% 15%;
-        margin-bottom: 50px;
+      
         background-color: rgba(44, 39, 39, 0.679);
         color: white;
     }
@@ -51,22 +62,36 @@
     #navbar>p{
       text-shadow: 10%;
     }
+ 
+   
     </style>
-    <div id="navbar">
-        <h2>SHAHSHOP.COM</h2>
-        <P><a href="./index.html">MEN</a></P>
-        <P><a href="./women.html">WOMEN</a>
-        </P>
-        <P><a href="card.html">Go to cart</a></P>
-        <p id='user'><a href="./login.html">Log In</a></p>
-       
+ <div id="tofix">
+  <div id="navbar">
+    <h2>SHAHSHOP.COM</h2>
+    <P><a href="./index.html">MEN</a></P>
+    <P><a href="./women.html">WOMEN</a>
+    </P>
+    <P><a href="card.html">Go to cart</a></P>
+    <p id='user'><a href="./login.html">Log In</a></p>
+   
+
+</div>
+
+ </div>
+
+  
+    <div id="par">
+      <label for="">Apply promo Code</label>
+      <input type="text" name="" id="parmo">
+      <button onclick="pr()">Apply code</button>
+      <a style="color: rgb(40, 199, 71);" href="./payment.html">Go to payment</a>
 
     </div>
     <div id="da">
 
     </div>
      <div id="main"></div>
-     <p ><a style="color: black;font-size: 35px;" href="payment.html">Continue to payment ...</a></p>
+     <p ><a style="color: rgb(50, 92, 219);font-size: 35px;" href="payment.html">Continue to payment ...</a></p>
 </body>
 <script>
     if(localStorage.getItem('curuser')!==null){
@@ -129,11 +154,35 @@ var username =localStorage.getItem('curuser')
 if(localStorage.getItem('curuser')==null){
   username="Guest"
 }
+
+
     var q =document.createElement('h3')
-    q.innerText=`${username} ,Your card value is Rs. ${sum} and items in card are ${item}.`
+    q.id='left'
+    q.innerText=` Your card value is Rs. ${sum} \n  Item: ${item}.`
 document.querySelector('#da').appendChild(q)
 
    localStorage.setItem("pay",JSON.stringify(sum))
    localStorage.setItem("no",JSON.stringify(item))
+   flag=true
+   function pr(){
+  var val=document.getElementById('parmo').value
+
+  if(val=="masai30"&&flag==true){
+    alert("You get 30% off")
+    sum=sum/100
+    sum=sum*70
+    flag=false
+
+  } else{
+    alert("Invalid code")
+    return
+  }
+  var q =document.createElement('h3')
+    q.id='left'
+    q.innerText=` Payble Rs. ${sum}   \n  Item: ${item}.`
+document.querySelector('#da').appendChild(q)
+localStorage.setItem("pay",JSON.stringify(sum))
+   localStorage.setItem("no",JSON.stringify(item))
+}
 </script>
 </html>
